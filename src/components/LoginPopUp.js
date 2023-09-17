@@ -129,6 +129,11 @@ function LoginPopUp({text, login, isLogged, Name, DrawerState}) {
   function log_in(e){
     e.preventDefault();
 
+    if(email.length === 0 || pass.length === 0){
+      setNotification('error', 'Please write your e-mail and password');
+      return;
+    }
+
     setLoad(true);
     axios.post(url,
       {
